@@ -1,5 +1,4 @@
 const mssql = require("mssql");
-const config = require("../dbConfig");
 const con = require('../connection')
 
  const  getUsers = async (id) =>{
