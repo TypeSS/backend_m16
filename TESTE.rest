@@ -12,12 +12,24 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email":"joseluiscardoso123@gmail.com",
-    "password":"123"
+    "email":"jonhenrilu@gmail.com"
 }
 
 ###
 
 GET http://localhost:3000/pratosdodia/1
 Content-Type: application/json
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "nome": "Jonathan Alves",
+    "email": "jonhenrilu@gmail.com",
+    "telefone":"925566577",
+    "morada":"ali",
+    "password":"123"
+}
 

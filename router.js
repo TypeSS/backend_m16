@@ -5,7 +5,7 @@ const userController = require('./Controllers/usercontroller');
 const produtosController = require('./Controllers/ProdutosController')
 const loginController = require('./Controllers/LoginController')
 const pdController = require('./Controllers/PdController')
-
+const registerController = require('./Controllers/RegisterUController')
 router.get('/teste/:id',userController.getusers)
 
 router.get('/produto/:id', produtosController.getProdC)
@@ -13,6 +13,8 @@ router.get('/produto/:id', produtosController.getProdC)
 router.post('/login', loginController.loginInfo)
 
 router.get('/pratosdodia/:id', pdController.getPD)
+
+router.post('/register', registerController.createUser)
 
 
 module.exports = router;

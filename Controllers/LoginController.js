@@ -6,7 +6,6 @@ const user = {
     email: req.body.email,
     password: req.body.password
 }
-console.log("sucesso!")
 const resp = await login.getLogin(user.email, user.password)
 
 return res.status(200).json(resp);
