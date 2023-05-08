@@ -6,6 +6,8 @@ const produtosController = require('./Controllers/ProdutosController')
 const loginController = require('./Controllers/LoginController')
 const pdController = require('./Controllers/PdController')
 const registerController = require('./Controllers/RegisterUController')
+
+
 router.get('/teste/:id',userController.getusers)
 
 router.get('/produto/:id', produtosController.getProdC)

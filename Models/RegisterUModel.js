@@ -6,7 +6,7 @@ const regUser = async (nome, email, telefone, morada, password)=>{
     const result = await pool.request().input("nome", mssql.VarChar, nome)
     .input("email", mssql.VarChar, email).input("telefone", mssql.Int, telefone)
     .input("morada", mssql.VarChar, morada).input("password", mssql.VarChar, password)
-    .query("INSERTO INTO Utilizadores (nome, email, telefone, morada, password) VALUES (@nome, @email, @telefone, @morada, @password)")
+    .query("INSERT INTO Utilizadores (nome, email, telefone, morada, password) VALUES (@nome, @email, @telefone, @morada, @password)")
     return result.recordsets[0];
 }
 
