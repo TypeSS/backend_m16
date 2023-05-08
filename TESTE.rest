@@ -1,2 +1,23 @@
 GET http://localhost:3000/teste/1
 Content-Type: application/json
+
+###
+
+GET http://localhost:3000/produto/2
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"joseluiscardoso123@gmail.com",
+    "password":"123"
+}
+
+###
+
+GET http://localhost:3000/pratosdodia/1
+Content-Type: application/json
+
