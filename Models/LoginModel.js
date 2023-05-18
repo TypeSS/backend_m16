@@ -12,7 +12,11 @@ const { user } = require('../dbConfig');
           .query("SELECT * FROM Utilizadores Where email =  @email");
         const data = email.recordset[0];
       
-        if (data == undefined || data == null) return "Email não existe.";
+        if (data == undefined || data == null) {
+          
+          let resp = {message: "Email não existe" };
+          return resp;
+        }
         if (await bcrypt.compare(user.password, data.password)) {
           let id = data.id_utilizador;
       
@@ -20,7 +24,8 @@ const { user } = require('../dbConfig');
       
           return resp;
         } else {
-          return "Senha Errada";
+          let resp = {message: "Senha Errada" };
+          return resp;
         }
     }
 
