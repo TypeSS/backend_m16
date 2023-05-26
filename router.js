@@ -8,9 +8,9 @@ const pdController = require('./Controllers/PdController')
 const registerController = require('./Controllers/RegisterUController')
 
 
-router.get('/teste/:id',userController.getusers)
+router.get('/teste',userController.getusers)
 
-router.get('/produto/:id', produtosController.getProdC)
+router.get('/produto', produtosController.getProdC)
 
 router.post('/login', loginController.loginInfo)
 

@@ -1,9 +1,9 @@
-GET http://localhost:3000/teste/1
+GET http://localhost:3000/teste
 Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/produto/2
+GET http://localhost:3000/produto
 Content-Type: application/json
 
 ###
