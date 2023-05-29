@@ -8,15 +8,23 @@ const pdController = require('./Controllers/PdController')
 const registerController = require('./Controllers/RegisterUController')
 
 
+
+//#region Users
 router.get('/teste',userController.getusers)
-
-router.get('/produto', produtosController.getProdC)
-
+router.get('/usercount',userController.usercount)
+router.post('/updateuser',userController.userupdate)
+router.post('/register', registerController.createUser)
 router.post('/login', loginController.loginInfo)
+//#endregion
 
+//#region Produtos
+router.get('/produto', produtosController.getProdC)
 router.get('/pratosdodia/:id', pdController.getPD)
 
-router.post('/register', registerController.createUser)
+//#endregion
+
+//#region Reservas
 
 
+//#endregion
 module.exports = router;
