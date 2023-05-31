@@ -37,3 +37,8 @@ Content-Type: application/json
 
 GET http://localhost:3000/usercount
 Content-Type: application/json
+
+###
+
+GET http://localhost:3000/restaurantes
+Content-Type: application/json

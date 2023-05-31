@@ -6,8 +6,13 @@ const produtosController = require('./Controllers/ProdutosController')
 const loginController = require('./Controllers/LoginController')
 const pdController = require('./Controllers/PdController')
 const registerController = require('./Controllers/RegisterUController')
+const reservaController = require('./Controllers/ReservasController')
+const restauranteController = require('./Controllers/RestauranteController')
 
-
+//#region Restaurante
+router.get('/reserva', reservaController.criarRes)
+router.get('/restaurantes', restauranteController.getrestaurante)
+//#endregion
 
 //#region Users
 router.get('/teste',userController.getusers)
@@ -23,8 +28,5 @@ router.get('/pratosdodia/:id', pdController.getPD)
 
 //#endregion
 
-//#region Reservas
 
-
-//#endregion
 module.exports = router;
