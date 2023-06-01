@@ -24,7 +24,8 @@ router.post('/login', loginController.loginInfo)
 //#endregion
 
 //#region Produtos
-router.get('/produto', produtosController.getProdC)
+router.get('/produto', produtosController.getProd)
+router.get('/produtocategoria/:id', produtosController.getprodC)
 router.get('/pratosdodia/:id', pdController.getPD)
 
 //#endregion
