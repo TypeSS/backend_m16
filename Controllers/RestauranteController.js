@@ -5,6 +5,11 @@ const getrestaurante = async (req,res)=>{
     return res.status(200).json(resp)
 }
 
+const getcategorias = async (req,res)=>{
+    const resp = await RestauranteModel.getCategorias();
+    return res.status(200).json(resp)
+}
 module.exports = {
-    getrestaurante
+    getrestaurante,
+    getcategorias
 }

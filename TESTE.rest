@@ -42,3 +42,8 @@ Content-Type: application/json
 
 GET http://localhost:3000/restaurantes
 Content-Type: application/json
+
+###
+
+GET http://localhost:3000/categorias
+Content-Type: application/json

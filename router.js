@@ -12,6 +12,7 @@ const restauranteController = require('./Controllers/RestauranteController')
 //#region Restaurante
 router.get('/reserva', reservaController.criarRes)
 router.get('/restaurantes', restauranteController.getrestaurante)
+router.get('/categorias', restauranteController.getcategorias)
 //#endregion
 
 //#region Users
