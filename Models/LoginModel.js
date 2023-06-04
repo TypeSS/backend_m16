@@ -1,7 +1,7 @@
 const sql = require('mssql');
 const con = require('../connection');
 const bcrypt = require('bcrypt');
-const { user } = require('../dbConfig');
+
 
     const login = async (user) => {
         const pool = await con;

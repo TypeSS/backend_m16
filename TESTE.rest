@@ -1,9 +1,9 @@
-GET http://localhost:3000/teste
+GET http://localhost:3000/users
 Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/produto
+GET http://localhost:3000/reserva
 Content-Type: application/json
 
 ###
@@ -50,5 +50,5 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/produtcategoria/1
+GET http://localhost:3000/produtcategoria/2
 Content-Type: application/json

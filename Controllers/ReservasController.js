@@ -1,8 +1,8 @@
 const ReservasModel = require("../Models/ReservasModel")
 
-const getreservas = async (req, res) => {
-    const resp = await ReservasModel.GetReservas();
-    return res.status(200).json(resp)
+const getres = async (req,res)=>{
+    const resp = await ReservasModel.getReservas();
+    return res.status(200).json(resp); 
 }
 
 const criarRes = async (req,res)=>{
@@ -12,14 +12,27 @@ const criarRes = async (req,res)=>{
         id_utilizador: req.body.id_utilizador,
         data: req.body.data,
         horas: req.body.horas,
-        observacao: req.body.observacao
+        observacoes: req.body.observacoes,
+        nPessoas: req.body.nPessoas
     }
 
-    const resp = await ReservasModel.CriarReserva(reserva.id_restaurante, reserva.id_utilizador, reserva.data, reserva.horas, reserva.observacao)
+    const resp = await ReservasModel.CriarReserva(reserva);
 
     return res.status(200).json(resp);
 }
 
+const mudarestado = async(req,res) => {
+    const estado = {
+        situacao: req.body.situacao,
+        id_reserva: req.body.id_reserva
+    }
+
+    const resp = await ReservasModel.mudarEstado(estado)
+    return res.status(200).json(resp);
+}
+
 module.exports = {
-    criarRes
+    criarRes,
+    getres,
+    mudarestado
 }

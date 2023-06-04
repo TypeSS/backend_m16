@@ -10,15 +10,17 @@ const reservaController = require('./Controllers/ReservasController')
 const restauranteController = require('./Controllers/RestauranteController')
 
 //#region Restaurante
-router.get('/reserva', reservaController.criarRes)
+router.post('/reservas', reservaController.criarRes)
+router.get('/reserva', reservaController.getres)
+router.put('/estadoreserva', reservaController.mudarestado)
 router.get('/restaurantes', restauranteController.getrestaurante)
 router.get('/categorias', restauranteController.getcategorias)
 //#endregion
 
 //#region Users
-router.get('/teste',userController.getusers)
+router.get('/users',userController.getusers)
 router.get('/usercount',userController.usercount)
-router.post('/updateuser',userController.userupdate)
+router.put('/updateuser',userController.userupdate)
 router.post('/register', registerController.createUser)
 router.post('/login', loginController.loginInfo)
 //#endregion
