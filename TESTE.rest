@@ -52,3 +52,9 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/produtcategoria/2
 Content-Type: application/json
+
+
+###
+
+GET  http://localhost:3000/mesasres/1
+Content-Type: application/json

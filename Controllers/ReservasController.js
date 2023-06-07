@@ -30,9 +30,24 @@ const mudarestado = async(req,res) => {
     const resp = await ReservasModel.mudarEstado(estado)
     return res.status(200).json(resp);
 }
+const addRservas = async(req,res)=>{
+    let mesas = req.body.mesas;
+ let data = {
+    reserva: req.body.id_reserva
+ }
+ const resp = await ReservasModel.CriarReserva(mesas,data)
+}
+
+const getmesasres = async (req,res)=>{
+    let restaurante = req.params.id_restaurante
+
+    const resp = await ReservasModel.getMesasRes(restaurante);
+    return res.status(200).json(resp);
+}
 
 module.exports = {
     criarRes,
     getres,
-    mudarestado
+    mudarestado,
+    getmesasres
 }

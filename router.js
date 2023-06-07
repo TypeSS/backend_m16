@@ -15,6 +15,7 @@ router.get('/reserva', reservaController.getres)
 router.put('/estadoreserva', reservaController.mudarestado)
 router.get('/restaurantes', restauranteController.getrestaurante)
 router.get('/categorias', restauranteController.getcategorias)
+router.get('/mesasres/:id_restaurante', reservaController.getmesasres)
 //#endregion
 
 //#region Users
