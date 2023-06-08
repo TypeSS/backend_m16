@@ -22,6 +22,7 @@ router.post('/mesasres', reservaController.mesares)
 //#region Users
 router.get('/users',userController.getusers)
 router.get('/usercount',userController.usercount)
+router.get('/user/:id', userController.getuserspid)
 router.put('/updateuser',userController.userupdate)
 router.post('/register', registerController.createUser)
 router.post('/login', loginController.loginInfo)
@@ -31,6 +32,7 @@ router.post('/login', loginController.loginInfo)
 router.get('/produto', produtosController.getProd)
 router.get('/produtocategoria/:id', produtosController.getprodC)
 router.get('/pratosdodia/:id', pdController.getPD)
+router.get('/ocasioes', pdController.Ocasioes)
 router.post('/produto',produtosController.criarprod)
 //#endregion
 

@@ -35,5 +35,6 @@ const usercount = async(req, res)=>{
 module.exports={
     getusers,
     userupdate,
-    usercount
+    usercount,
+    getuserspid
 }

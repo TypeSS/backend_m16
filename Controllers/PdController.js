@@ -6,6 +6,12 @@ const resp = await PdModel.getPD(id);
 return res.status(200).json(resp);
 }
 
+const Ocasioes = async(req,res)=>{
+    const resp = await PdModel.getOcasioes();
+    return res.status(200).json(resp)
+}
+
 module.exports = {
-    getPD : PD
+    getPD : PD,
+    Ocasioes
 }

@@ -8,6 +8,13 @@ const getPD = async (id)=>{
     return result.recordsets[0];
 }
 
+const getOcasioes = async ()=>{
+    const pool = await con;
+    const result = await pool.request().query("SELECT * FROM Ocasioes")
+    return result.recordsets[0];
+}
+
 module.exports = {
-    getPD
+    getPD,
+    getOcasioes
 }

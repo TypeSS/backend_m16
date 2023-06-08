@@ -70,3 +70,13 @@ Content-Type: application/json
     "preco":2,
     "id_categoria":4
 }
+
+###
+
+GET http://localhost:3000/Ocasioes
+Content-Type: application/json
+
+###
+
+GET http://localhost:3000/user/1
+Content-Type: application/json
