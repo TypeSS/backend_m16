@@ -14,15 +14,15 @@ const getuserspid = async (req,res)=>{
 const userupdate = async(req, res)=>{
 
     const user = {
-        "id":req.params.id,
-        "nome":req.params.nome,
-        "email":req.params.email,
-        "telefone":req.params.telefone,
-        "morada":req.params.morada,
-        "codPostal":req.params.codPostal
+        id:req.body.id_utilizador,
+        nome:req.body.nome,
+        email:req.body.email,
+        telefone:req.body.telefone,
+        morada:req.body.morada,
+        codPostal:req.body.codPostal
     };
 
-    
+    console.log(user)
     const resp = await sql.updateUser(user);
     return res.status(200).json(resp); 
 }

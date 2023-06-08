@@ -17,7 +17,7 @@ const getProdutos = async()=>{
 
     const CriarProd = async(prod)=>{
         const pool = await con; // Assuming you have a connection pool named "con"
-  const result = await pool
+        const result = await pool
     .request()
     .input("nomeproduto", mssql.VarChar(255), prod.nomeproduto)
     .input("descricao", mssql.VarChar(255), prod.descricao)
@@ -28,8 +28,23 @@ const getProdutos = async()=>{
     return result.recordsets[0]
     }
 
+    const updateProduto = async(prod)=>{
+
+        const pool = await con; // Assuming you have a connection pool named "con"
+        const result = await pool
+    .request()
+    .input("nomeproduto", mssql.VarChar(255), prod.nomeproduto)
+    .input("descricao", mssql.VarChar(255), prod.descricao)
+    .input("preco", mssql.Int, prod.preco)
+    .input("id_categoria", mssql.Int, prod.id_categoria)
+    .query("UPDATE Produtos SET nomeproduto = @nomeproduto, descricao = @descricao, preco = @preco, id_categoria = @id_categoria WHERE nomeproduto = @nomeproduto");
+
+    return result.recordsets[0]
+    }
+
 module.exports = {
     getProdutos,
     getProdutospC,
-    CriarProd
+    CriarProd,
+    updateProduto
 }

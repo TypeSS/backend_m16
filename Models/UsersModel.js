@@ -14,9 +14,9 @@ const getUsers = async ()=>{
     return result.recordsets[0];
 }
 
-const updateUser = async (i, nome, email,telefone, morada, codPostal )=>{
+const updateUser = async (user)=>{
     const pool = await con;
-    const result = await pool.request().input("id_utilizador", mssql.Int, id).input("nome", mssql.VarChar(255), nome).input("email",mssql.VarChar(255),email).input("telefone", mssql.Int, telefone).input("morada", mssql.VarChar(255), morada).input("codigoP", mssql.VarChar("255"), codPostal).query("UPDATE Utilizadores SET nome = @nome, email = @email, telefone = @telefone, morada = @morada, codPostal = @codPostal where id_utilizador = @id_utilizador")
+    const result = await pool.request().input("id_utilizador", mssql.Int, user.id).input("nome", mssql.VarChar(255), user.nome).input("email",mssql.VarChar(255),user.email).input("telefone", mssql.Int, user.telefone).input("morada", mssql.VarChar(255), user.morada).input("codPostal", mssql.VarChar("255"), user.codPostal).query("UPDATE Utilizadores SET nome = @nome, email = @email, telefone = @telefone, morada = @morada, codPostal = @codPostal where id_utilizador = @id_utilizador")
     return result.recordsets[0]
 }
 
