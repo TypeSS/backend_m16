@@ -38,16 +38,31 @@ const addRservas = async(req,res)=>{
  const resp = await ReservasModel.CriarReserva(mesas,data)
 }
 
-const getmesasres = async (req,res)=>{
+const getmesasdispo = async (req,res)=>{
     let restaurante = req.params.id_restaurante
 
-    const resp = await ReservasModel.getMesasRes(restaurante);
+    const resp = await ReservasModel.getMesasDispo(restaurante);
     return res.status(200).json(resp);
+}
+
+const mesares = async (req,res)=>{
+    const info = req.body
+    const resps = []
+    console.log(info)
+
+    for(let i = 0; i<info.length; i++){
+    const resp = await ReservasModel.mesasRes(info[i])
+    resps.push(resp);
+    }
+
+    console.log(resps)
+    return res.status(200).json(resps);
 }
 
 module.exports = {
     criarRes,
     getres,
     mudarestado,
-    getmesasres
+    getmesasdispo,
+    mesares
 }

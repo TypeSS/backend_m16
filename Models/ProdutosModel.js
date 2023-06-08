@@ -15,7 +15,21 @@ const getProdutos = async()=>{
         return result.recordsets[0];
     }
 
+    const CriarProd = async(prod)=>{
+        const pool = await con; // Assuming you have a connection pool named "con"
+  const result = await pool
+    .request()
+    .input("nomeproduto", mssql.VarChar(255), prod.nomeproduto)
+    .input("descricao", mssql.VarChar(255), prod.descricao)
+    .input("preco", mssql.Int, prod.preco)
+    .input("id_categoria", mssql.Int, prod.id_categoria)
+    .query("INSERT INTO Produtos (nomeproduto, descricao, preco, id_categoria) VALUES (@nomeproduto, @descricao, @preco, @id_categoria)");
+
+    return result.recordsets[0]
+    }
+
 module.exports = {
     getProdutos,
-    getProdutospC
+    getProdutospC,
+    CriarProd
 }

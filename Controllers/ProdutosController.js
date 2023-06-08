@@ -11,7 +11,21 @@ const getprodC = async (req,res)=>{
     return res.status(200).json(resp);
 }
 
+const criarprod = async (req, res)=>{
+    const prod ={
+        nomeproduto:req.body.nomeproduto,
+        descricao:req.body.descricao,
+        preco:req.body.preco,
+        id_categoria:req.body.id_categoria
+    }
+
+    const resp = await produtos.CriarProd(prod)
+    return res.status(200).json(resp);
+}
+
+
 module.exports = {
     getProd : getprodutos,
-    getprodC
+    getprodC,
+    criarprod
 }

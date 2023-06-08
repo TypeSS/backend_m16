@@ -58,3 +58,15 @@ Content-Type: application/json
 
 GET  http://localhost:3000/mesasres/1
 Content-Type: application/json
+
+###
+
+POST http://localhost:3000/produto
+Content-Type: application/json
+
+{
+    "nomeproduto":"Pão de ló",
+    "descricao":"...",
+    "preco":2,
+    "id_categoria":4
+}
