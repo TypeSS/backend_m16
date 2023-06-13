@@ -12,7 +12,12 @@ const getCategorias = async()=> {
     const result = await pool.request().query("SELECT * FROM Categorias")
     return result.recordsets[0];
 }
+
+const criarEncomenda = async()=>{
+ 
+}
 module.exports = {
     getRestaurantes,
-    getCategorias
+    getCategorias,
+    criarEncomenda
 }

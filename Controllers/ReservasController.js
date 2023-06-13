@@ -59,10 +59,17 @@ const mesares = async (req,res)=>{
     return res.status(200).json(resps);
 }
 
+const rescli = async(req,res)=>{
+    let id = req.params.id
+    const resp = await ReservasModel.resCli(id);
+    return res.status(200).json(resp);
+}
+
 module.exports = {
     criarRes,
     getres,
     mudarestado,
     getmesasdispo,
-    mesares
+    mesares,
+    rescli
 }

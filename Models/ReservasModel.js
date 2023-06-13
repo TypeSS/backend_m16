@@ -37,6 +37,13 @@ return result.recordsets[0];
     
 }
 
+resCli = async (id)=>{
+    const pool = await con;
+    const result = await pool.request().input("id", mssql.Int, id).query("select [dbo].[Utilizadores].nome, [dbo].[Restaurantes].nome_restaurante, data, horas, nPessoas, situacao, observacoes from [dbo].[Reservas] inner join [dbo].[Utilizadores] on [dbo].[Utilizadores].id_utilizador = [dbo].[Reservas].id_utilizador inner join [dbo].[Restaurantes] on [dbo].[Restaurantes].id_restaurante = [dbo].[Reservas].id_restaurante where Utilizadores.id_utilizador = @id")
+
+    return result.recordsets[0]
+}
+
 
 
 module.exports = {
@@ -44,5 +51,6 @@ module.exports = {
     CriarReserva,
     mudarEstado,
     getMesasDispo,
-    mesasRes
+    mesasRes,
+    resCli
 }

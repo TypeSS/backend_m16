@@ -78,5 +78,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/user/1
+GET http://localhost:3000/reservas/2
 Content-Type: application/json
+
+GET http://localhost:3000/imagem
+Content-Type: application/json
+
+{
+    "img":1
+}

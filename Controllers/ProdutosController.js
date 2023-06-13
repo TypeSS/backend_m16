@@ -36,6 +36,8 @@ const updateprod = async(req,res)=>{
 }
 
 
+
+
 module.exports = {
     getProd : getprodutos,
     getprodC,
