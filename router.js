@@ -34,7 +34,7 @@ router.get('/produto', produtosController.getProd)
 router.get('/produtocategoria/:id', produtosController.getprodC)
 router.get('/pratosdodia/:id', pdController.getPD)
 router.get('/ocasioes', pdController.Ocasioes)
-router.post('/produto',produtosController.criarprod)
+router.post('/produto',produtosController.upload,produtosController.criarprod)
 router.put('/updateProduto', produtosController.updateprod)
 //#endregion
 

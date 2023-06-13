@@ -24,7 +24,8 @@ const getProdutos = async()=>{
     .input("descricao", mssql.VarChar(255), prod.descricao)
     .input("preco", mssql.Int, prod.preco)
     .input("id_categoria", mssql.Int, prod.id_categoria)
-    .query("INSERT INTO Produtos (nomeproduto, descricao, preco, id_categoria) VALUES (@nomeproduto, @descricao, @preco, @id_categoria)");
+    .input("imagem", mssql.VarChar(255),prod.imagem)
+    .query("INSERT INTO Produtos (nomeproduto, descricao, preco, id_categoria, imagem) VALUES (@nomeproduto, @descricao, @preco, @id_categoria, @imagem)");
 
     return result.recordsets[0]
     }
