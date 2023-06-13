@@ -4,7 +4,7 @@ const con = require('../connection');
 
 const getProdutos = async()=>{
     const pool = await con;
-    const result = await pool.request().query("SELECT Produtos.nomeproduto, Produtos.descricao, Produtos. preco, Categorias.categoria, imagens.url_imagem from Produtos inner join Categorias on Categorias.id_categoria = Produtos.id_categoria inner join imagens on imagens.id_imagem = Produtos.id_imagem order by categoria")
+    const result = await pool.request().query("SELECT Produtos.nomeproduto, Produtos.descricao, Produtos. preco, Categorias.categoria, Produtos.imagem from Produtos inner join Categorias on Categorias.id_categoria = Produtos.id_categoria order by categoria")
     return result.recordsets[0];
 }
 
@@ -12,7 +12,7 @@ const getProdutos = async()=>{
 
     const getProdutospC = async (id)=>{
         const pool = await con;
-        const result = await pool.request().input("id_categoria", mssql.Int, id).query("SELECT nomeproduto, descricao, preco, Categorias.categoria, imagens.url_imagem FROM Produtos inner join Categorias on Produtos.id_categoria = Categorias.id_categoria inner join imagens on Produtos.id_imagem = imagens.id_imagem where Produtos.id_categoria = @id_categoria")
+        const result = await pool.request().input("id_categoria", mssql.Int, id).query("SELECT nomeproduto, descricao, preco, Categorias.categoria, Produtos.imagem FROM Produtos inner join Categorias on Produtos.id_categoria = Categorias.id_categoria inner join imagens on where Produtos.id_categoria = @id_categoria")
         return result.recordsets[0];
     }
 
