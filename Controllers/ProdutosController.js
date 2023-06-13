@@ -13,18 +13,9 @@ const getprodC = async (req,res)=>{
 }
 
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'C:/Users/José Cardoso/Downloads/cenasmalucas/'); // Specify the destination folder where the files will be saved
-    },
-    filename: (req, file, cb) => {
-      cb(null, file.originalname); // Use the original filename for the saved file
-    },
-  });
 
-  
-  
-const criarprod = async (req, res)=>{
+
+  const criarprod = async (req, res)=>{
 
     
         const prod = {
@@ -52,14 +43,10 @@ const criarprod = async (req, res)=>{
         }
 
         const resp = await produtos.CriarProd(prod)
-        return res.status(200).json(resp)
-
-        
-        // Process the form data or perform any required operations
-    
+        return res.status(200).json(resp)    
 }
 
-const upload = multer({ storage: multer.memoryStorage() }).single('ficheiro'); // Use memoryStorage() to store the file in memory
+const upload = multer({ storage: multer.memoryStorage() }).single('ficheiro');
 
 
 const updateprod = async(req,res)=>{
