@@ -60,6 +60,8 @@ const updateprod = async(req,res)=>{
 
     const resp = await produtos.updateProduto(prod);
     return res.status(200).json(resp);
+
+    
 }
 
 const deleteprod = async (req,res)=>{
