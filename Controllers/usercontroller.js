@@ -32,9 +32,16 @@ const usercount = async(req, res)=>{
     console.log(result)
     return res.status(200).json(result)
 }
+
+const deleteuser = async(req,res)=>{
+    let id = req.params.id
+    const resp = await sql.deleteUser(id)
+    return res.status(200).json(resp)
+}
 module.exports={
     getusers,
     userupdate,
     usercount,
-    getuserspid
+    getuserspid,
+    deleteuser
 }

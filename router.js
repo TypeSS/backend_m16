@@ -27,6 +27,7 @@ router.get('/user/:id', userController.getuserspid)
 router.put('/updateuser',userController.userupdate)
 router.post('/register', registerController.createUser)
 router.post('/login', loginController.loginInfo)
+router.delete('/cliente/:id', userController.deleteuser)
 //#endregion
 
 //#region Produtos
@@ -36,6 +37,7 @@ router.get('/pratosdodia/:id', pdController.getPD)
 router.get('/ocasioes', pdController.Ocasioes)
 router.post('/produto',produtosController.upload,produtosController.criarprod)
 router.put('/updateProduto', produtosController.updateprod)
+router.delete('/produto/:id', produtosController.deleteprod)
 //#endregion
 
 

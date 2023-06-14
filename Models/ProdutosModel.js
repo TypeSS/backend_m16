@@ -4,7 +4,7 @@ const con = require('../connection');
 
 const getProdutos = async()=>{
     const pool = await con;
-    const result = await pool.request().query("SELECT Produtos.nomeproduto, Produtos.descricao, Produtos. preco, Categorias.categoria, Produtos.imagem from Produtos inner join Categorias on Categorias.id_categoria = Produtos.id_categoria order by categoria")
+    const result = await pool.request().query("SELECT Produtos.id_produto, Produtos.nomeproduto, Produtos.descricao, Produtos. preco, Categorias.categoria, Categorias.id_categoria,  Produtos.imagem from Produtos inner join Categorias on Categorias.id_categoria = Produtos.id_categoria order by categoria")
     return result.recordsets[0];
 }
 
@@ -17,7 +17,7 @@ const getProdutos = async()=>{
     }
 
     const CriarProd = async(prod)=>{
-        const pool = await con; // Assuming you have a connection pool named "con"
+        const pool = await con;
         const result = await pool
     .request()
     .input("nomeproduto", mssql.VarChar(255), prod.nomeproduto)
@@ -32,21 +32,34 @@ const getProdutos = async()=>{
 
     const updateProduto = async(prod)=>{
 
-        const pool = await con; // Assuming you have a connection pool named "con"
-        const result = await pool
+    const pool = await con; 
+    const result = await pool
     .request()
+    .input("id_produto", mssql.Int, prod.id_produto)
     .input("nomeproduto", mssql.VarChar(255), prod.nomeproduto)
     .input("descricao", mssql.VarChar(255), prod.descricao)
     .input("preco", mssql.Int, prod.preco)
     .input("id_categoria", mssql.Int, prod.id_categoria)
-    .query("UPDATE Produtos SET nomeproduto = @nomeproduto, descricao = @descricao, preco = @preco, id_categoria = @id_categoria WHERE nomeproduto = @nomeproduto");
+    .query("UPDATE Produtos SET nomeproduto = @nomeproduto, descricao = @descricao, preco = @preco, id_categoria = @id_categoria WHERE id_produto = @id_produto");
 
     return result.recordsets[0]
+    }
+
+    const deleteProduto = async (id)=>{
+        const pool = await con;
+        const result = await pool
+        .request()
+        .input("id_produto",mssql.Int, id)
+        .query("DELETE FROM Produtos where id_produto = @id_produto")
+
+        console.log(id)
+        return result.recordsets[0]
     }
 
 module.exports = {
     getProdutos,
     getProdutospC,
     CriarProd,
-    updateProduto
+    updateProduto,
+    deleteProduto
 }

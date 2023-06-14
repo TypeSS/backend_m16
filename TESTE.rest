@@ -61,7 +61,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/produto
+POST http://localhost:3000/updateProduto
 Content-Type: application/json
 
 {

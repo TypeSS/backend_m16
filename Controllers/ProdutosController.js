@@ -51,18 +51,24 @@ const upload = multer({ storage: multer.memoryStorage() }).single('ficheiro');
 
 const updateprod = async(req,res)=>{
     const prod ={
+        id_produto:req.body.id_produto,
         nomeproduto:req.body.nomeproduto,
         descricao:req.body.descricao,
         preco:req.body.preco,
         id_categoria:req.body.id_categoria
     } 
 
-    const imagem = Buffer(req.body.ficheiro)
-
     const resp = await produtos.updateProduto(prod);
     return res.status(200).json(resp);
 }
 
+const deleteprod = async (req,res)=>{
+    let id = req.params.id
+    console.log(id)
+
+    const resp = await produtos.deleteProduto(id)
+    return res.status(200).json(resp)
+}
 
 
 
@@ -71,5 +77,6 @@ module.exports = {
     getprodC,
     criarprod,
     updateprod,
-    upload
+    upload,
+    deleteprod
 }

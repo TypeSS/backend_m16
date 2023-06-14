@@ -27,10 +27,19 @@ const userCount = async ()=>{
 }
 
 
+const deleteUser = async (id)=>{
+    const pool = await con;
+    const result = await pool.request()
+    .input("id", mssql.Int, id)
+    .query("delete from Utilizadores where id_utilizador = @id")
+}
+
+
 
 module.exports = { 
     getUsers,
     getUserspId,
     userCount,
-    updateUser
+    updateUser,
+    deleteUser
 }
