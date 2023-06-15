@@ -13,10 +13,11 @@ const user = {
     email: req.body.email,
     telefone: req.body.telefone,
     morada: req.body.morada,
-    password: pass
+    password: pass,
+    codPostal:req.body.codPostal
 }
 
-const resp = await reg.regUser(user.nome, user.email, user.telefone, user.morada, user.password)
+const resp = await reg.regUser(user)
 
 return res.status(200).json(resp);
 

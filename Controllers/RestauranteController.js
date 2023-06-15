@@ -11,7 +11,16 @@ const getcategorias = async (req,res)=>{
 }
 
 const criarnec = async(req,res)=>{
-    const resp = await RestauranteModel.criarnec
+    let estado = "Preparação"
+    const encomendas = {
+        "id_utilizador":req.body.id_utilizador,
+        "id_restaurante":req.body.id_restaurante,
+        "tipoEnc":req.body.tipoEnc,
+        "estado":estado
+    }
+
+    
+    const resp = await RestauranteModel.criarEncomenda()
 }
 
 const prodenc = async (req,res)=>{
