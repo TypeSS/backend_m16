@@ -18,9 +18,8 @@ const criarnec = async(req,res)=>{
         "tipoEnc":req.body.tipoEnc,
         "estado":estado
     }
-
     
-    const resp = await RestauranteModel.criarEncomenda()
+    const resp = await RestauranteModel.criarEncomenda(encomendas)
 }
 
 const prodenc = async (req,res)=>{
