@@ -28,19 +28,10 @@ const criarenc = async (req, res) => {
     } catch (error) {
       return res.status(500).json({ error: "Erro" });
     }
-<<<<<<< Updated upstream
     
     const resp = await RestauranteModel.criarEncomenda(encomendas)
 }
 
-const prodenc = async (req,res)=>{
-    const produtos = req.body
-
-    for(let i = 0;i<produtos.length;i++){
-        const resp = await RestauranteModel.prodEnc(produtos[i])
-=======
-  };
-  
   const prodenc = async (req, res) => {
     try {
       const prodEnc = req.body;
@@ -54,7 +45,6 @@ const prodenc = async (req,res)=>{
       return res.status(200).json(resps);
     } catch (error) {
       return res.status(500).json({ error: "Erro" });
->>>>>>> Stashed changes
     }
   };
   
