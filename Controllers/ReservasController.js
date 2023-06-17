@@ -1,5 +1,6 @@
 const ReservasModel = require("../Models/ReservasModel")
 
+
 const getres = async (req,res)=>{
     const resp = await ReservasModel.getReservas();
     return res.status(200).json(resp); 

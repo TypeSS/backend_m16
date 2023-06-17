@@ -12,7 +12,7 @@ const getProdutos = async()=>{
 
     const getProdutospC = async (id)=>{
         const pool = await con;
-        const result = await pool.request().input("id_categoria", mssql.Int, id).query("SELECT nomeproduto, descricao, preco, Categorias.categoria, Produtos.imagem FROM Produtos inner join Categorias on Produtos.id_categoria = Categorias.id_categoria where Produtos.id_categoria = @id_categoria")
+        const result = await pool.request().input("id_categoria", mssql.Int, id).query("SELECT id_produto, nomeproduto, descricao, preco, Categorias.categoria, Produtos.imagem FROM Produtos inner join Categorias on Produtos.id_categoria = Categorias.id_categoria where Produtos.id_categoria = @id_categoria")
         return result.recordsets[0];
     }
 
