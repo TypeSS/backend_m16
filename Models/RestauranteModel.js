@@ -38,7 +38,6 @@ const criarEncomenda = async (enc) => {
 
       const getId = await pool.request().query("SELECT TOP 1 id_encomenda FROM Encomendas ORDER BY id_encomenda DESC")
       const insertedId = getId.recordset[0].id_encomenda
-      console.log(insertedId);
       try {
         const result = await pool
         .request()
@@ -51,16 +50,30 @@ const criarEncomenda = async (enc) => {
         );
         return result.recordsets[0]
       } catch (error) {
-        console.error(error);
         return res.status(500).json({ error: 'Internal Server Error' });
       }
       
       
   };
+
+  const getEncomendas = async ()=>{
+    const pool = await con;
+    const result = await pool.request().query("SELECT Encomendas.id_encomenda, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante");
+    return result.recordsets[0];
+  }
+
+  const getProdEnc = async (id)=>{
+    const pool = await con;
+    const result = await pool.request().input("id_encomenda", mssql.Int, id)
+    .query("SELECT ProdEnc.id_encomenda, Produtos.nomeproduto, ProdEnc.quant, ProdEnc.preco FROM produtos INNER JOIN ProdEnc ON Produtos.id_produto = ProdEnc.id_produto INNER JOIN Encomendas ON ProdEnc.id_encomenda = Encomendas.id_encomenda WHERE Encomendas.id_encomenda = @id_encomenda")
+    return result.recordsets[0];
+  }
   
 module.exports = {
     getRestaurantes,
     getCategorias,
     criarEncomenda,
-    prodEnc
+    prodEnc,
+    getEncomendas,
+    getProdEnc
 }

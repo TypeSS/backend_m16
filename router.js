@@ -20,6 +20,8 @@ router.post('/mesasres', reservaController.mesares)
 router.get('/reservas/:id',reservaController.rescli)
 router.post('/encomenda', restauranteController.criarenc)
 router.post('/prodenc', restauranteController.prodenc)
+router.get('/encomenda', restauranteController.getenc)
+router.get('/prodenc/:id', restauranteController.getprodenc)
 //#endregion
 
 //#region Users

@@ -32,14 +32,11 @@ const criarenc = async (req, res) => {
     try {
       const prodEnc = req.body
     const resps = []
-    console.log(prodEnc)
 
     for(let i = 0; i<prodEnc.length; i++){
     const resp = await RestauranteModel.prodEnc(prodEnc[i])
     resps.push(resp);
     }
-
-    console.log(resps)
     return res.status(200).json(resps);
     } catch (error) {
       return res.status(500).json({ error: "Erro"+error });
@@ -47,9 +44,32 @@ const criarenc = async (req, res) => {
   };
   
 
+  const getenc = async (req,res)=>{
+    try{
+      const resp = await RestauranteModel.getEncomendas();
+    return res.status(200).json(resp)
+    }
+    catch(error){
+      return res.status(500).json({ "Erro":error })
+    }
+  }
+
+
+  const getprodenc = async (req, res)=>{
+    try{
+      let id = req.params.id
+      const resp = await RestauranteModel.getProdEnc(id)
+      return res.status(200).json(resp)
+    }
+    catch(error){
+      return res.status(500).json({ "Erro":error })
+    }
+  }
 module.exports = {
     getrestaurante,
     getcategorias,
     criarenc,
-    prodenc
+    prodenc,
+    getenc,
+    getprodenc
 }
