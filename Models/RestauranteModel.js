@@ -29,25 +29,33 @@ const criarEncomenda = async (enc) => {
         "DECLARE @output TABLE (id_encomenda INT); INSERT INTO Encomendas (id_utilizador, id_restaurante, tipoEnc, estado, precototal) OUTPUT inserted.id_encomenda INTO @output VALUES (@id_utilizador, @id_restaurante, @tipoEnc, @estado, @precototal); SELECT id_encomenda FROM @output;"
       );
   
-      const insertedId = result.recordset[0].id_encomenda;
-      console.log(insertedId)
-    return result.recordsets[0], insertedId;
+  return result.recordsets[0]
   };
   
 
-  const prodEnc = async (prodEnc, insertedId) => {
+  const prodEnc = async (prodEnc) => {
       const pool = await con;
-    const result = await pool
-      .request()
-      .input("id_encomenda", mssql.Int, insertedId)
-      .input("nomeproduto", mssql.VarChar(255), prodEnc.nomeproduto)
-      .input("preco", mssql.Numeric(18, 2), prodEnc.preco)
-      .input("quantidade", mssql.Int, prodEnc.quantidade)
-      .query(
-        "INSERT INTO ProdEnc (id_encomenda, id_produto, quant, preco) VALUES (@id_encomenda, @nomeproduto, @preco, @quantidade)"
-      );
 
-      return result.recordsets[0]
+      const getId = await pool.request().query("SELECT TOP 1 id_encomenda FROM Encomendas ORDER BY id_encomenda DESC")
+      const insertedId = getId.recordset[0].id_encomenda
+      console.log(insertedId);
+      try {
+        const result = await pool
+        .request()
+        .input("id_encomenda", mssql.Int, insertedId)
+        .input("id_produto", mssql.Int, prodEnc.id_produto)
+        .input("preco", mssql.Numeric(18, 2), prodEnc.preco)
+        .input("quantidade", mssql.Int, prodEnc.quantidade) 
+        .query(
+          "INSERT INTO ProdEnc (id_encomenda, id_produto, preco, quant) VALUES (@id_encomenda, @id_produto, @preco, @quantidade)"
+        );
+        return result.recordsets[0]
+      } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      
+      
   };
   
 module.exports = {
