@@ -5,7 +5,7 @@ let idEnc;
 
 const getRestaurantes = async ()=> {
     const pool = await con;
-    const result = await pool.request().query("SELECT * FROM Restaurantes")
+    const result = await pool.request().query("SELECT * FROM Restaurantes order by nome_restaurante")
     return result.recordsets[0];
 }
 
@@ -62,6 +62,13 @@ const criarEncomenda = async (enc) => {
     return result.recordsets[0];
   }
 
+
+  const getEncomendasCli = async (id)=>{
+    const pool = await con;
+    const result = await pool.request().input("id_utilizador", mssql.Int,id).query("SELECT Encomendas.id_encomenda, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante where Utilizadores.id_utilizador = @id_utilizador");
+    return result.recordsets[0];
+  }
+
   const getProdEnc = async (id)=>{
     const pool = await con;
     const result = await pool.request().input("id_encomenda", mssql.Int, id)
@@ -75,5 +82,6 @@ module.exports = {
     criarEncomenda,
     prodEnc,
     getEncomendas,
+    getEncomendasCli,
     getProdEnc
 }
