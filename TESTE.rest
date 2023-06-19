@@ -92,3 +92,19 @@ Content-Type: application/json
 
 GET  http://localhost:3000/encomenda
 Content-Type: application/json
+
+###
+
+POST http://localhost:3000/adminreg
+Content-Type: application/json
+
+{
+    "nomefunc": "José Cardoso",
+    "email": "joseluiscardoso123@gmail.com",
+    "telefone": "926370910",
+    "morada": "teste",
+    "password": "123",
+    "codPostal":"2222-222",
+    "id_cargo":2
+
+}

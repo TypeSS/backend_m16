@@ -34,6 +34,12 @@ router.post('/login', loginController.loginInfo)
 router.delete('/cliente/:id', userController.deleteuser)
 //#endregion
 
+
+//#region 
+router.post('/adminreg', registerController.regadmin)
+router.post('/adminlogin', loginController.loginAdmin)
+//#endregion
+
 //#region Produtos
 router.get('/produto', produtosController.getProd)
 router.get('/produtocategoria/:id', produtosController.getprodC)
