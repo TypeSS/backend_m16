@@ -54,6 +54,17 @@ const criarenc = async (req, res) => {
     }
   }
 
+  const getenccli= async(req,res)=>{
+    try{
+      let id = req.params.id
+      const resp = await RestauranteModel.getEncomendasCli(id);
+      return res.status(200).json(resp)
+    }
+    catch(error){
+      return res.status(500).json({ "Erro":error })
+    }
+  }
+
 
   const getprodenc = async (req, res)=>{
     try{
@@ -71,5 +82,6 @@ module.exports = {
     criarenc,
     prodenc,
     getenc,
+    getenccli,
     getprodenc
 }
