@@ -75,6 +75,14 @@ const criarEncomenda = async (enc) => {
     .query("SELECT ProdEnc.id_encomenda, Produtos.nomeproduto, ProdEnc.quant, ProdEnc.preco FROM produtos INNER JOIN ProdEnc ON Produtos.id_produto = ProdEnc.id_produto INNER JOIN Encomendas ON ProdEnc.id_encomenda = Encomendas.id_encomenda WHERE Encomendas.id_encomenda = @id_encomenda")
     return result.recordsets[0];
   }
+
+  const Lucro = async ()=>{
+    const pool = await con;
+    const result = await pool.request().query('SELECT Sum(precototal) as soma from Encomendas')
+    return result.recordset[0]
+  }
+
+ 
   
 module.exports = {
     getRestaurantes,
@@ -83,5 +91,6 @@ module.exports = {
     prodEnc,
     getEncomendas,
     getEncomendasCli,
-    getProdEnc
+    getProdEnc,
+    Lucro
 }

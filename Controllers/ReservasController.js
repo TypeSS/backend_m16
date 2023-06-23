@@ -66,11 +66,17 @@ const rescli = async(req,res)=>{
     return res.status(200).json(resp);
 }
 
+const totalres = async(req,res)=>{
+    const resp = await ReservasModel.TotalRes();
+    return res.status(200).json(resp);
+}
+
 module.exports = {
     criarRes,
     getres,
     mudarestado,
     getmesasdispo,
     mesares,
-    rescli
+    rescli,
+    totalres
 }

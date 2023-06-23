@@ -22,8 +22,8 @@ const updateUser = async (user)=>{
 
 const userCount = async ()=>{
     const pool = await con;
-    const result = await pool.request().query("SELECT count(nome) from Utilizadores")
-    return result.recordsets[0]
+    const result = await pool.request().query("SELECT count(nome) as Count from Utilizadores")
+    return result.recordset[0]
 }
 
 

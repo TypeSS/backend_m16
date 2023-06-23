@@ -76,6 +76,11 @@ const criarenc = async (req, res) => {
       return res.status(500).json({ "Erro":error })
     }
   }
+
+  const lucro = async (req,res)=>{
+    const resp = await RestauranteModel.Lucro();
+    return res.status(200).json(resp)
+  }
 module.exports = {
     getrestaurante,
     getcategorias,
@@ -83,5 +88,6 @@ module.exports = {
     prodenc,
     getenc,
     getenccli,
-    getprodenc
+    getprodenc,
+    lucro
 }

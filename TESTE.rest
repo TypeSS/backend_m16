@@ -104,3 +104,9 @@ Content-Type: application/json
 
 GET http://localhost:3000/getadmin
 Content-Type: application/json
+
+###
+
+GET http://localhost:3000/lucro
+Content-Type: application/json
+
