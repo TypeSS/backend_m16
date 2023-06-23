@@ -1,6 +1,8 @@
 require("dotenv").config()
 const express = require("express");
 var router = express.Router();
+
+
 const userController = require('./Controllers/usercontroller');
 const produtosController = require('./Controllers/ProdutosController')
 const loginController = require('./Controllers/LoginController')
@@ -8,6 +10,7 @@ const pdController = require('./Controllers/PdController')
 const registerController = require('./Controllers/RegisterUController')
 const reservaController = require('./Controllers/ReservasController')
 const restauranteController = require('./Controllers/RestauranteController')
+
 
 //#region Restaurante
 router.post('/reservas', reservaController.criarRes)

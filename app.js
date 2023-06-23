@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require('body-parser')
 
 const corsOptions = {
-    origin: ['http://localhost:4200','http://localhost:64139']
+    origin: ['http://localhost:4200']
 }  
 
 app.use(express.json());
