@@ -37,6 +37,9 @@ router.put('/updateuser',userController.userupdate)
 router.post('/register', registerController.createUser)
 router.post('/login', loginController.loginInfo)
 router.delete('/cliente/:id', userController.deleteuser)
+router.get('/getadmin', userController.getadmin)
+router.put('/admin', userController.adminupdate)
+router.delete('/admin/:id', userController.deleteadmin)
 //#endregion
 
 

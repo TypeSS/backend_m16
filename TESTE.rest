@@ -98,3 +98,9 @@ Content-Type: application/json
 
 GET http://localhost:3000/encomenda/2
 Content-Type: application/json
+
+
+###
+
+GET http://localhost:3000/getadmin
+Content-Type: application/json
