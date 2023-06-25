@@ -58,14 +58,20 @@ const criarEncomenda = async (enc) => {
 
   const getEncomendas = async ()=>{
     const pool = await con;
-    const result = await pool.request().query("SELECT Encomendas.id_encomenda, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante");
+    const result = await pool.request().query("SELECT Encomendas.id_encomenda,Utilizadores.id_utilizador, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante");
     return result.recordsets[0];
   }
 
 
   const getEncomendasCli = async (id)=>{
     const pool = await con;
-    const result = await pool.request().input("id_utilizador", mssql.Int,id).query("SELECT Encomendas.id_encomenda, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante where Utilizadores.id_utilizador = @id_utilizador");
+    const result = await pool.request().input("id_utilizador", mssql.Int,id).query("SELECT Encomendas.id_encomenda, Utilizadores.id_utilizador, Utilizadores.nome, Restaurantes.nome_restaurante, Encomendas.precototal, Encomendas.tipoEnc, Encomendas.estado from Encomendas inner join Utilizadores on Utilizadores.id_utilizador = Encomendas.id_utilizador inner join Restaurantes on Encomendas.id_restaurante = Restaurantes.id_restaurante where Utilizadores.id_utilizador = @id_utilizador");
+    return result.recordsets[0];
+  }
+
+  const updateEnc = async(encInfo)=>{
+    const pool = await con;
+    const result = await pool.request().input('id', mssql.Int, encInfo.id).input('estado', mssql.VarChar(255), encInfo.estado).query("UPDATE Encomendas SET estado = @estado where id_encomenda = @id");
     return result.recordsets[0];
   }
 
@@ -91,6 +97,7 @@ module.exports = {
     prodEnc,
     getEncomendas,
     getEncomendasCli,
+    updateEnc,
     getProdEnc,
     Lucro
 }

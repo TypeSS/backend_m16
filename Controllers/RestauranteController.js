@@ -81,6 +81,15 @@ const criarenc = async (req, res) => {
     const resp = await RestauranteModel.Lucro();
     return res.status(200).json(resp)
   }
+
+  const updatenec = async (req,res)=>{
+    encInfo={
+      'id':req.body.id_encomenda,
+      'estado':req.body.estado
+    }
+    const resp = await RestauranteModel.updateEnc(encInfo)
+    return res.status(200).json(resp)
+  }
 module.exports = {
     getrestaurante,
     getcategorias,
@@ -89,5 +98,6 @@ module.exports = {
     getenc,
     getenccli,
     getprodenc,
-    lucro
+    lucro,
+    updatenec
 }

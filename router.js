@@ -28,6 +28,7 @@ router.get('/encomenda/:id', restauranteController.getenccli)
 router.get('/prodenc/:id', restauranteController.getprodenc)
 router.get('/rescount', reservaController.totalres)
 router.get('/lucro', restauranteController.lucro)
+router.put('/encomenda', restauranteController.updatenec)
 
 //#endregion
 
